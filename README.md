@@ -86,13 +86,13 @@ This reads a single word (up to 31 characters) from the keyboard and prints it b
 
 ## 3) Questions
 
-1. What does `scanf` do, and from where does it read by default?
+1. What does `scanf` do, and from where does it read by default? Scanf does is a nice fuction, that is able to read your input, but it's only able to read words. It reads by deffault from the stdin wich is the keyboard buffer.
 
-2. What are the risks of using `scanf("%s", ...)` without a length specifier?
+2. What are the risks of using `scanf("%s", ...)` without a length specifier? The risk is that you get a overflow of the buffer, because scanf doesn t check if there is enaugh storage in the array
 
-3. How is the `read` system call used in Assembly to receive input from `stdin`?
+3. How is the `read` system call used in Assembly to receive input from `stdin`? First the system call defines rax 0 wich is the syscall function for read, than it sets the file descriptor rdi 0, wich is used for "stdin" standard in input buffer, thats the point from where the syscall reads. Next we need to set where our string gets saved. This is done by rsi, buffer wich is the address of our first "Buffer Storage Byte". Next the length of bytes that should be read is defined, which in our case is 32: rdx 32. Last command is syscall, which executes the syscall.
 
-4. What is the purpose of file descriptor `0`?
+4. What is the purpose of file descriptor `0`?File descriptor 0 is the fd for standard input, which is by standard the keyboard buffer, in our case it's the place from where the syscall reads.
 
 ## 4) Advice
 
